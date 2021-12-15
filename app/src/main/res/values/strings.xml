@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Safe</string>
+    <string name="txtAttendant">Atendente</string>
+    <string name="txtUser">Usuário</string>
 </resources>
