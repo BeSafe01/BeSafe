@@ -2,4 +2,8 @@
     <string name="app_name">Safe</string>
     <string name="txtAttendant">Atendente</string>
     <string name="txtUser">Usuário</string>
+    <string name="hintCpf">Cpf</string>
+    <string name="hintPassword">Senha</string>
+    <string name="btnVerify">Verificar</string>
+    <string name="txtCreateNewAccount">Criar uma nova conta</string>
 </resources>
