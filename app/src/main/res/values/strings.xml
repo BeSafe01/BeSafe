@@ -6,4 +6,11 @@
     <string name="hintPassword">Senha</string>
     <string name="btnVerify">Verificar</string>
     <string name="txtCreateNewAccount">Criar uma nova conta</string>
+    <string name="hintFullName">Nome Completo</string>
+    <string name="hintDateBirth">Data de nascimento</string>
+    <string name="hintPhone">Telefone</string>
+    <string name="hintPhoneEmergency">Telefone de Emergência</string>
+    <string name="hintEmail">E-mail</string>
+    <string name="hintConfirmPassword">Confirmar senha</string>
+    <string name="btnRegister">Cadastrar</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.safe
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_login)
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         val db =  Firebase.firestore
@@ -30,7 +31,8 @@ class LoginActivity : AppCompatActivity() {
         })
 
         txtCreate.setOnClickListener( View.OnClickListener {
-
+           val intent = Intent(this,RegisterActivityUser::class.java)
+            startActivity(intent)
         })
     }
 }

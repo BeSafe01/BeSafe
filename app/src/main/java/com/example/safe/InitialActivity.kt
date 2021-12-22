@@ -10,10 +10,10 @@ import com.example.safe.databinding.ActivityInitialBinding
 class InitialActivity : AppCompatActivity() {
     
     private lateinit var binding : ActivityInitialBinding
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_initial)
         binding = ActivityInitialBinding.inflate(layoutInflater)
 
         var intent = Intent(this,LoginActivity::class.java)
