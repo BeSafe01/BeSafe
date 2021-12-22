@@ -11,17 +11,23 @@
         android:id="@+id/button2"
         android:layout_width="350dp"
         android:layout_height="350dp"
+        android:layout_marginBottom="96dp"
         android:background="@drawable/custom_circle_white"
-        tools:layout_editor_absoluteX="-64dp"
-        tools:layout_editor_absoluteY="-167dp" />
+        app:layout_constraintBottom_toTopOf="@+id/edtCpfLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="350dp"
         android:layout_height="350dp"
+        android:layout_marginBottom="88dp"
         android:background="@drawable/custom_circle_white"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="-117dp" />
+        app:layout_constraintBottom_toTopOf="@+id/edtCpfLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edtCpfLogin"

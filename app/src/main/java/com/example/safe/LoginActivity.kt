@@ -12,22 +12,47 @@ import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityLoginBinding
+  //  private lateinit var binding : ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        val binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val db =  Firebase.firestore
-        var cpf =  binding.edtCpfLogin;
-        var password = binding.edtPasswordLogin;
+        var edtCpf =  binding.edtCpfLogin;
+        var edtPassword = binding.edtPasswordLogin;
         val txtCreate = binding.txtCreateNewAccount;
+        val btnVerifyLogin = binding.btnVerifyLoin
 
-        binding.btnVerifyLoin.setOnClickListener(View.OnClickListener {
-            if (cpf.text.isEmpty() || password.text.isEmpty()){
+        btnVerifyLogin.setOnClickListener(View.OnClickListener {
+            if (edtCpf.text.isEmpty() || edtPassword.text.isEmpty()){
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show()
-            }else{}
+            }else{
+                val cpfRef = db.collection("users").document(edtCpf.text.toString())
+                cpfRef.get().addOnCompleteListener{ task ->
+                    if (task.isSuccessful){
+                        val document = task.result
+                        if (document != null){
+                            var userCpf = document.id
+                            if (userCpf.equals(edtCpf.text.toString())){
+                                var passwordLogin =document.getString("password")
+                                if (passwordLogin.equals(edtPassword.text.toString())){
+                                    Toast.makeText(this,"Entrando", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this,MainActivity::class.java)
+                                    startActivity(intent)
+                                }else{
+                                    Toast.makeText(this,"Senha incorreta", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }else{
+                        Toast.makeText(this, "Usuario não encontrado (primeiro else)",Toast.LENGTH_SHORT).show()
+                        }
+                    }else{
+                        Toast.makeText(this,"Usuario não encontrado (Segundo else)", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         })
 
         txtCreate.setOnClickListener( View.OnClickListener {

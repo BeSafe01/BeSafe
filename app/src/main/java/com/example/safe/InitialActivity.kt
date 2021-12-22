@@ -13,8 +13,9 @@ class InitialActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_initial)
-        binding = ActivityInitialBinding.inflate(layoutInflater)
+        val binding = ActivityInitialBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         var intent = Intent(this,LoginActivity::class.java)
 
