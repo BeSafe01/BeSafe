@@ -3,9 +3,9 @@ package com.example.safe
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.safe.databinding.ActivityLoginBinding
 import com.example.safe.databinding.ActivityRegisterUserBinding
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.firestore.ktx.firestore
@@ -13,40 +13,31 @@ import com.google.firebase.ktx.Firebase
 
 class RegisterActivityUser : AppCompatActivity() {
 
-    //private lateinit var binding: ActivityRegisterUserBinding
+    private lateinit var binding: ActivityRegisterUserBinding
     val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityRegisterUserBinding.inflate(layoutInflater)
+         binding = ActivityRegisterUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var btnRegisterUser = binding.btnRegisterUser
-        var edtNameUser = binding.edtFullNameUser
-        var edtCpfUser = binding.edtCpfUser
-        var edtDateBirthUser = binding.edtDateBirthUser
-        var edtPhoneUser = binding.edtPhoneUser
-        var edtPhoneEmergencyUser = binding.edtPhoneEmergencyUser
-        var edtEmailUser = binding.edtEmailUser
-        var edtPasswordUser = binding.edtPasswordUser
-        var edtConfirmPasswordUser = binding.edtConfirmPasswordUser
 
-        btnRegisterUser.setOnClickListener(View.OnClickListener {
-            if (edtNameUser.text.isEmpty() && edtCpfUser.text.isEmpty() &&
-                    edtDateBirthUser.text.isEmpty() && edtPhoneUser.text.isEmpty() &&
-                    edtPhoneEmergencyUser.text.isEmpty() && edtEmailUser.text.isEmpty() &&
-                    edtPasswordUser.text.isEmpty() && edtConfirmPasswordUser.text.isEmpty()){
+        binding.btnRegisterUser.setOnClickListener {
+            //Mudar && para ||, preencha os
+            if (binding.edtFullNameUser.text.isEmpty() || binding.edtCpfUser.text.isEmpty() ||
+                binding.edtDateBirthUser.text.isEmpty() || binding.edtPhoneUser.text.isEmpty() ||
+                binding.edtPhoneEmergencyUser.text.isEmpty() || binding.edtEmailUser.text.isEmpty() ||
+                binding.edtPasswordUser.text.isEmpty() || binding.edtConfirmPasswordUser.text.isEmpty()){
 
-                Toast.makeText(this,"Preencha todos os campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Preencha os campos vazio", Toast.LENGTH_SHORT).show()
 
             }else{
-                val user = UserClass(edtNameUser.text.toString(), edtCpfUser.text.toString(),
-                    edtDateBirthUser.text.toString(), edtPhoneUser.text.toString(),
-                    edtPhoneEmergencyUser.text.toString(), edtEmailUser.text.toString(),
-                    edtPasswordUser.text.toString())
+                val user = UserModel(binding.edtFullNameUser.text.toString(), binding.edtEmailUser.text.toString(),
+                    binding.edtPasswordUser.text.toString(),binding.edtCpfUser.text.toString() , binding.edtPhoneUser.text.toString() ,
+                    binding.edtPhoneEmergencyUser.text.toString()  ,binding.edtDateBirthUser.text.toString() )
 
                 db.collection("users")//Name Collection
-                    .document(edtCpfUser.text.toString())//Reference id: Cpf
+                    .document(binding.edtCpfUser.text.toString())//Reference id: Cpf
                     .set(user)//put data in the database
 
                     .addOnSuccessListener {
@@ -60,6 +51,6 @@ class RegisterActivityUser : AppCompatActivity() {
                     })
             }
 
-        })
+        }
     }
 }
