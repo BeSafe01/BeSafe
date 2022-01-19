@@ -172,9 +172,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/btnRegister"
-        app:layout_constraintEnd_toEndOf="@+id/edtConfirmPasswordUser"
+        app:layout_constraintEnd_toEndOf="@+id/edtConfirmPasswordAttendant"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/edtConfirmPasswordUser"
-        app:layout_constraintTop_toBottomOf="@+id/edtConfirmPasswordUser" />
+        app:layout_constraintStart_toStartOf="@+id/edtConfirmPasswordAttendant"
+        app:layout_constraintTop_toBottomOf="@+id/edtConfirmPasswordAttendant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

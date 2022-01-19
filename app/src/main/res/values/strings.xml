@@ -13,4 +13,5 @@
     <string name="hintEmail">E-mail</string>
     <string name="hintConfirmPassword">Confirmar senha</string>
     <string name="btnRegister">Cadastrar</string>
+    <string name="hintIdentificationCode">Codigo de identificação</string>
 </resources>
