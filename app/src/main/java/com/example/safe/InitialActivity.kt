@@ -3,9 +3,11 @@ package com.example.safe
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
+import com.example.safe.attendant.LoginActivityAttendant
+import com.example.safe.attendant.RegisterActivityAttendant
 import com.example.safe.databinding.ActivityInitialBinding
+import com.example.safe.user.LoginActivityUser
 
 class InitialActivity : AppCompatActivity() {
     
@@ -17,14 +19,16 @@ class InitialActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        var intent = Intent(this,LoginActivity::class.java)
+        val intentUser = Intent(this, LoginActivityUser::class.java)
+        val intentAttendant = Intent(this, RegisterActivityAttendant::class.java)
 
         binding.btnUserInitial.setOnClickListener(View.OnClickListener {
-            startActivity(intent)
+            startActivity(intentUser)
+
         })
 
         binding.btnAttendantInitial.setOnClickListener(View.OnClickListener {
-            startActivity(intent)
+            startActivity(intentAttendant)
         })
     }
 }

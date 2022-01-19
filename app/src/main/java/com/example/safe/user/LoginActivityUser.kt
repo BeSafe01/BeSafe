@@ -1,16 +1,17 @@
-package com.example.safe
+package com.example.safe.user
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.safe.databinding.ActivityInitialBinding
+import com.example.safe.MainActivity
+import com.example.safe.attendant.RegisterActivityAttendant
 import com.example.safe.databinding.ActivityLoginBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivityUser : AppCompatActivity() {
 
   //  private lateinit var binding : ActivityLoginBinding
 
@@ -39,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
                                 var passwordLogin =document.getString("password")
                                 if (passwordLogin.equals(edtPassword.text.toString())){
                                     Toast.makeText(this,"Entrando", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this,MainActivity::class.java)
+                                    val intent = Intent(this, MainActivity::class.java)
                                     startActivity(intent)
                                 }else{
                                     Toast.makeText(this,"Senha incorreta", Toast.LENGTH_SHORT).show()
@@ -56,8 +57,8 @@ class LoginActivity : AppCompatActivity() {
         })
 
         txtCreate.setOnClickListener( View.OnClickListener {
-           val intent = Intent(this,RegisterActivityUser::class.java)
-            startActivity(intent)
+                val intent = Intent(this, RegisterActivityUser::class.java)
+                startActivity(intent)
         })
     }
 }

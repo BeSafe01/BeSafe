@@ -1,10 +1,8 @@
-package com.example.safe
+package com.example.safe.user
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.example.safe.databinding.ActivityRegisterUserBinding
 import com.google.android.gms.tasks.OnFailureListener
@@ -42,7 +40,7 @@ class RegisterActivityUser : AppCompatActivity() {
 
                     .addOnSuccessListener {
                         Toast.makeText(this,"Cadastrado com sucesso", Toast.LENGTH_SHORT).show()
-                        val intent = Intent (this, LoginActivity::class.java)
+                        val intent = Intent (this, LoginActivityUser::class.java)
                         startActivity(intent)
                     }
 

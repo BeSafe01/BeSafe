@@ -1,12 +1,12 @@
-package com.example.safe
+package com.example.safe.attendant
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.safe.databinding.ActivityInitialBinding
+import com.example.safe.user.LoginActivityUser
+import com.example.safe.user.UserModel
 import com.example.safe.databinding.ActivityRegisterAttendantBinding
-import com.example.safe.databinding.ActivityRegisterUserBinding
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -34,13 +34,13 @@ class RegisterActivityAttendant : AppCompatActivity() {
                     binding.edtPasswordAttendant.text.toString(), binding.edtCpfAttendant.text.toString() ,
                     binding.edtPhoneAttendant.text.toString()  ,binding.edtIdentificationCodeAttendant.text.toString(),binding.edtDateBirthAttendant.text.toString() )
 
-                db.collection("users")//Name Collection
+                db.collection("attendant")//Name Collection
                     .document(binding.edtCpfAttendant.text.toString())//Reference id: Cpf
                     .set(user)//put data in the database
 
                     .addOnSuccessListener {
                         Toast.makeText(this,"Cadastrado com sucesso", Toast.LENGTH_SHORT).show()
-                        val intent = Intent (this, LoginActivity::class.java)
+                        val intent = Intent (this, LoginActivityAttendant::class.java)
                         startActivity(intent)
                     }
 
